@@ -7,7 +7,7 @@ export class BasePage {
   }
 
   async goto(path = '/') {
-    await this.page.goto(path);
+    await this.page.goto(path,{ waitUntil: 'networkidle' });
   }
 
   async getTitle() {
