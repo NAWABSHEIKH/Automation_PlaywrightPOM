@@ -13,4 +13,8 @@ export class HomePage extends BasePage {
   async goToSignup() {
     await this.signupLoginLink.click();
   }
+  async goToSignupLogin() {
+  await this.page.click('a[href="/login"]');
+}
+
 }

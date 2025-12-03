@@ -21,7 +21,19 @@ export class LoginPage extends BasePage{
        await this.password.fill(password);
     }
 
-    async clickLoginBtn() {
-       await this.loginBtn.click();
-    }
+    async enterEmail(email: string) {
+  await this.page.fill('input[data-qa="login-email"]', email);
+}
+
+async enterPassword(password: string) {
+  await this.page.fill('input[data-qa="login-password"]', password);
+}
+
+async clickLoginBtn() {
+  await Promise.all([
+    this.page.waitForNavigation({ waitUntil: 'domcontentloaded' }),
+    this.page.click('button[data-qa="login-button"]')
+  ]);
+}
+
 }
